@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include "basic.h"
 
-int main() {
-    
+int main(int argc,char *argv[]) {
+    get(argc,argv);
     srand((unsigned int)time(NULL));
     int r,d,n,c;
     printf("Number of players: ");scanf("%d",n); 
