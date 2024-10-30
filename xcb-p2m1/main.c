@@ -4,6 +4,7 @@
 #include "basic.h"
 
 int main() {
+    
     srand((unsigned int)time(NULL));
     int r,d,n,c;
     printf("Number of players: ");scanf("%d",n); 
