@@ -1,7 +1,6 @@
 #ifndef BASIC_H
 #define BASIC_H
 
-
  typedef struct {
      Card card;
      int score;
@@ -18,5 +17,9 @@ typedef struct {
     Suit suit;
     int rank;
 } Card;
+
+void print_help();
+
+int get(int argc,char *argv[]);
 
 #endif
