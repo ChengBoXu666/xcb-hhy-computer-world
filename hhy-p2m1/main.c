@@ -28,8 +28,7 @@ void init_beforestart(){
     printf("\n");
     Init_deck(decknumber);
     Shuffle(numberofcards_in_deckforfetch);
-    printf("Shuffle result:");
-    Show_card(deckforfetch,numberofcards_in_deckforfetch);
+    
 }
 
 int main( void ) {
