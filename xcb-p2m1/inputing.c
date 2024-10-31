@@ -13,7 +13,7 @@
     printf("-a|--auto              Run in demo mode\n");
 }*/
 
-Result initial(int argc,char *argv[]) {
+Result inputing(int argc,char *argv[]) {
     int players=4;      
     int cards=5;      
     int decks=2;              

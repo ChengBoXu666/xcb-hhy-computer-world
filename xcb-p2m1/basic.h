@@ -30,6 +30,10 @@ typedef struct {
 
 //void print_help();
 
-Result initial(int argc,char *argv[]);
+Result inputing(int argc,char *argv[]);
+
+void intial_shuffle(Card* card_fetch,int total);
+
+void intial_output(int n,int r,int d,int c,int demo);
 
 #endif
