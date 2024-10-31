@@ -1,12 +1,16 @@
 #ifndef BASIC_H
 #define BASIC_H
 
- typedef struct {
-     Card card;
-     int score;
- } Player;
+typedef struct {
+    int players;      
+    int cards;      
+    int decks;              
+    int rounds;            
+    char *filename;  
+    int demo_mode;
+} Result;
 
- typedef enum {
+typedef enum {
     Spades,
     Hearts,
     Diamonds,
@@ -18,8 +22,14 @@ typedef struct {
     int rank;
 } Card;
 
-void print_help();
+ typedef struct {
+     Card **card;
+     Card leader;
+     int score;
+ } Player;
 
-int get(int argc,char *argv[]);
+//void print_help();
+
+Result initial(int argc,char *argv[]);
 
 #endif

@@ -4,14 +4,19 @@
 #include "basic.h"
 
 int main(int argc,char *argv[]) {
-    get(argc,argv);
+    Result result=initial(argc,argv);
+    int n,r,d,c;
+    n=result.players;
+    r=result.rounds;
+    d=result.decks;
+    c=result.cards;
     srand((unsigned int)time(NULL));
-    int r,d,n,c;
-    printf("Number of players: ");scanf("%d",n); 
-    printf("Number of rounds: ");scanf("%d",r);
-    printf("Number of decks: ");scanf("%d",d);
-    printf("Number of each player's card");scanf("%d",c);
-    Player player[n];
-    assign(n,player);
+    printf("Number of players: ");
+    printf("Number of rounds: ");
+    printf("Number of decks: ");
+    printf("Number of each player's card");
+    Player *player=malloc(sizeof(Player));
+    Card *card_fetch[];
+
     return 0;
 }
