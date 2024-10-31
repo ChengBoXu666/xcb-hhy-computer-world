@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: gcc.exe 生成多文件项目",
+            "command": "C:\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+               "${workspaceFolder}/*.c",  // 编译当前工作区中的所有 .c 文件
+               "-o",
+               "${workspaceFolder}/output.exe"  // 指定生成的可执行文件路径
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"  // 工作目录为工作区目录
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "用于多文件项目的编译任务。"
+        }
+    ]
+}
