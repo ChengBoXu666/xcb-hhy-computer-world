@@ -4,9 +4,9 @@
 #include "card.h"
 
 typedef struct{
-    int score;          //玩家分数
-    int card_number;    //玩家卡牌数
-    Card* card_list;    //玩家卡牌组(动态)
+    int score;          
+    int card_number;    
+    Card* card_list;    
 }Player;
 
 void Fetch( int fetch_number, Player* player);

@@ -1,15 +1,26 @@
 #include "card.h"
 
-Card* Init_deck(int NumberOfDecks){
-    Card* deck = (Card*)malloc(NumberOfDecks*52*sizeof(Card));  //请求一个大小为牌组数*52*Card结构大小的空间用于存放每张牌的信息
+void Init_deck(int NumberOfDecks){
+    Card* deckforfetch = (Card*)malloc(NumberOfDecks*52*sizeof(Card));  
+    numberofcards_in_deckforfetch = NumberOfDecks*52;
     for(int i = 0; i < NumberOfDecks*52; i++){
-        deck[i].suit = i%52/13 + 1;     //分配牌的花色
-        deck[i].rank = i%52%13 + 1;     //分配牌的数字
-    }
-    return deck;    //返回牌组起始地址
+        deckforfetch[i].suit = i%52/13 + 1;     
+        deckforfetch[i].rank = i%52%13 + 1;     
+    }   
+    Card* deckfordiscard = (Card*)malloc(NumberOfDecks*52*sizeof(Card));
+    numberofcards_in_deckfordiscard = 0;
 }
 
-void Shuffle(Card* deck){
-    
+void Shuffle(int numberofcards){
+    printf("Shuffling cards...");
+    for(int i = numberofcards-1; i > 0; i){
+        int temp_suit = deckforfetch[i].suit;
+        int temp_rank = deckforfetch[i].rank;
+        int x = rand()%i;
+        deckforfetch[i].suit = deckforfetch[x].suit;
+        deckforfetch[i].rank = deckforfetch[x].rank;
+        deckforfetch[x].suit = temp_suit;
+        deckforfetch[x].rank = temp_rank;
+    }
 }
 

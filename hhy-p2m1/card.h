@@ -1,14 +1,20 @@
 #ifndef CARD_H
 #define CARD_H
 
+#include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 typedef struct {
-    int suit;   //定义花色(rank):黑桃(1)->spade 红桃(2)->heart 方块(3)->dimond 梅花(4)->club
-    int rank;   //定义数字:2,3,4,5,6,7,8,9,10,J,Q,L,A
+    int suit;   
+    int rank;   
 }Card;
 
+extern Card* deckforfetch;
+extern Card* deckfordiscard;
+extern int numberofcards_in_deckforfetch;
+extern int numberofcards_in_deckfordiscard;
 
+void Init_deck(int NumberOfDecks);
+void Shuffle(int numberofcards);
 
 #endif 
