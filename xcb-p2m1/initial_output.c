@@ -4,16 +4,16 @@
 #include "basic.h"
 
 void intial_output(int n,int r,int d,int c,int demo) {
-    pnintf("########################\n");
-    pnintf("#                      #\n");
-    pnintf("# Welcome to One Card! #\n");
-    pnintf("#                      #\n");
-    pnintf("########################\n");
-    pnintf("---- Initial setup ----");
-    pnintf("\n");
+    printf("########################\n");
+    printf("#                      #\n");
+    printf("# Welcome to One Card! #\n");
+    printf("#                      #\n");
+    printf("########################\n");
+    printf("---- Initial setup ----");
+    printf("\n");
     printf("Number of players: %d\n",n);
-    printf("Number of rounds: %d\n",r);
+    priintf("Number of rounds: %d\n",r);
     printf("Number of decks: %d\n",d);
     printf("Number of each player's card: %d\n",c);
-    pnintf("\n");
+    printf("\n");
 }
