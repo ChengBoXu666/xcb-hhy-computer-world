@@ -17,3 +17,5 @@ void intial_output(int n,int r,int d,int c,int demo) {
     printf("Number of each player's card: %d\n",c);
     printf("\n");
 }
+
+
