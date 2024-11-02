@@ -3,7 +3,7 @@
 #include <string.h>
 #include "basic.h"
 
-void intial_output(int n,int r,int d,int c,int demo) {
+void initial_output(int n,int r,int d,int c,int demo) {
     printf("########################\n");
     printf("#                      #\n");
     printf("# Welcome to One Card! #\n");
@@ -12,10 +12,11 @@ void intial_output(int n,int r,int d,int c,int demo) {
     printf("---- Initial setup ----");
     printf("\n");
     printf("Number of players: %d\n",n);
-    priintf("Number of rounds: %d\n",r);
+    printf("Number of rounds: %d\n",r);
     printf("Number of decks: %d\n",d);
     printf("Number of each player's card: %d\n",c);
-    printf("\n");
+    printf("\n");  
+    (void)demo;
 }
 
 

@@ -10,15 +10,8 @@ typedef struct {
     int demo_mode;
 } Result;
 
-typedef enum {
-    Spades,
-    Hearts,
-    Diamonds,
-    Clubs
-} Suit;
-
 typedef struct {
-    Suit suit;
+    int suit;
     int rank;
 } Card;
 
@@ -32,8 +25,9 @@ typedef struct {
 
 Result inputing(int argc,char *argv[]);
 
-void intial_shuffle(Card* card_fetch,int total);
+void initial_shuffle(Card* card_fetch,int total);
 
-void intial_output(int n,int r,int d,int c,int demo);
+void initial_output(int n,int r,int d,int c,int demo);
 
 #endif
+

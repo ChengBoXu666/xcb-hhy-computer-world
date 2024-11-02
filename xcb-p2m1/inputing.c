@@ -33,7 +33,7 @@ Result inputing(int argc,char *argv[]) {
         } else if (strncmp(argv[i],"-c",2) == 0 || strncmp(argv[i],"--initial-cards=",16)==0) {
             cards=atoi(argv[i]+((strncmp(argv[i],"-c",2)==0 ? 2:16))); 
         } else if (strncmp(argv[i],"-d",2) == 0 || strncmp(argv[i], "--decks=", 8) == 0) {
-            decks=toi(argv[i]+((strncmp(argv[i],"-d",2)==0 ? 2:8)));
+            decks=atoi(argv[i]+((strncmp(argv[i],"-d",2)==0 ? 2:8)));
         } else if (strncmp(argv[i],"-r",2)==0 || strncmp(argv[i],"--rounds=",9) == 0) {
             rounds=atoi(argv[i]+((strncmp(argv[i],"-r",2)==0 ? 2:9)));
         } else if (strcmp(argv[i],"-a")==0 || strcmp(argv[i],"--auto")==0) {
@@ -42,9 +42,11 @@ Result inputing(int argc,char *argv[]) {
     }
     result.cards=cards;
     result.decks=decks;
-    result.filename=*filename;
+    result.filename=filename;
     result.players=players;
-    result.decks=decks;
+    result.rounds=rounds;
     result.demo_mode=demo_mode;
     return result;
 }
+
+

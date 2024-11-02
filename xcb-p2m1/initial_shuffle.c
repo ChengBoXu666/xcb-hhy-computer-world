@@ -3,7 +3,7 @@
 #include <string.h>
 #include "basic.h"
 
-void intial_shuffle(Card* card_fetch,int total){
+void initial_shuffle(Card* card_fetch,int total){
     printf("Shuffling cards...\n");
     for (int i=total-1; i>0; i--) {
         int temp_suit=card_fetch[i].suit;
@@ -15,3 +15,4 @@ void intial_shuffle(Card* card_fetch,int total){
         card_fetch[t].rank=temp_rank;
     }
 }
+
