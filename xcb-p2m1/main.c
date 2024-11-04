@@ -27,7 +27,7 @@ int main(int argc,char *argv[]) {
     //Card *card_discard=(Card*)malloc((size_t)d*52*sizeof(Card));
     for(int i=0; i<d*52; i++){
         card_fetch[i].suit = i%52/13+1;     
-        card_fetch[i].rank = i%52%13+1;     
+        card_fetch[i].rank = i%52%13+2;     
     }  
     initial_shuffle(card_fetch,total);
     return 0;
