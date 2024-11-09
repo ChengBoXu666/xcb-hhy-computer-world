@@ -62,6 +62,7 @@ void Shuffle(Card *p_deck, int index_top){
         p_deck[j].rank = trank;
     }
 }
+
 void Init_Deal(){
     printf("Dealing cards...\n");
     for(int i = 0; i < num_player; i++){
@@ -159,7 +160,6 @@ void Determine_play_order(){
     printf("The game will start with player %d\n",min_index+1);
     free(temp);
 }
-        
 
 void Init(int *p_r){
     printf("########################\n");
@@ -182,6 +182,7 @@ void Free(){
     free(deck);
     free(discard);
 }
+
 int main(void){
     srand(time(0));
     //roundnumber
