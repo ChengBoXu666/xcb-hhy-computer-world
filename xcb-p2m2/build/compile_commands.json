@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/initial_assignment.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/initial_output.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/initial_shuffle.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/inputing.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/main.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -O2 -Werror -Wall -Wextra -Wno-unused-result -Wconversion -Wvla -Wpedantic -std=c11 -std=gnu11 -o CMakeFiles/onecard.dir/src/play.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/initial_assignment.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/initial_output.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/initial_shuffle.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/inputing.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/main.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=undefined -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/ubsan.dir/src/play.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/initial_assignment.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/initial_output.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/initial_shuffle.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/inputing.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/main.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=address -fno-omit-frame-pointer -fno-sanitize-recover=all -std=gnu11 -o CMakeFiles/asan.dir/src/play.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/initial_assignment.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_assignment.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/initial_output.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_output.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/initial_shuffle.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/initial_shuffle.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/inputing.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/inputing.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/main.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/main.c"
+},
+{
+  "directory": "/mnt/d/Manuel151/ChengboXu524370910111-p2/build",
+  "command": "clang-14   -DDEBUG -g -fsanitize=memory -fno-omit-frame-pointer -fsanitize-memory-track-origins -fPIE -O2 -std=gnu11 -o CMakeFiles/msan.dir/src/play.c.o -c /mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c",
+  "file": "/mnt/d/Manuel151/ChengboXu524370910111-p2/src/play.c"
+}
+]

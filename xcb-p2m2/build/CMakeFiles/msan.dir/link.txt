@@ -1,0 +1,1 @@
+clang-14 -fsanitize=memory -pie CMakeFiles/msan.dir/src/initial_assignment.c.o CMakeFiles/msan.dir/src/initial_output.c.o CMakeFiles/msan.dir/src/initial_shuffle.c.o CMakeFiles/msan.dir/src/inputing.c.o CMakeFiles/msan.dir/src/main.c.o CMakeFiles/msan.dir/src/play.c.o -o msan  -lm 

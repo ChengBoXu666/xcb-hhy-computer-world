@@ -3,11 +3,11 @@
 #include <string.h>
 #include "basic.h"
 
-Player **initial_assignment(Card *card_fetch, Player **player, Result result)
+Player** initial_assignment(Card *card_fetch, Player **player, Result result)
 {
     int t = 0;
     for (int i = 1; i < result.players + 1; i++)
-        player[i]->card = malloc(result.cards * sizeof(Card *));
+        player[i]->card = malloc((long unsigned int)result.cards * sizeof(Card *));
     for (int i = 0; i < result.cards; i++)
     {
         for (int j = 1; j < result.players + 1; j++)

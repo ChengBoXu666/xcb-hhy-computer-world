@@ -7,6 +7,12 @@ Player **play(Player **player, Card *card_fetch, Card *card_discard, Result resu
 {
     printf("---- Game start ----");
     Table table;
+    table.current = malloc(sizeof(Card));
+    if (table.current == NULL)
+    {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
     table.player = player[0]->score;
     table.attack = 0;
     table.direction = 1;
@@ -76,4 +82,8 @@ Player **play(Player **player, Card *card_fetch, Card *card_discard, Result resu
         printf("%s", "Ace\n");
         break;
     }
+    
+    
+    return player;
 }
+

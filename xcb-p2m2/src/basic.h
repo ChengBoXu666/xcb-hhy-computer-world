@@ -22,7 +22,7 @@ typedef struct
     int player;
     int direction;
     int attack;
-    int index1;;
+    int index1;
     int index2;
     Card* current;
 } Table;
@@ -44,6 +44,6 @@ void initial_shuffle(Card *card_fetch, int total);
 
 void initial_output(int n, int r, int d, int c, int demo);
 
-Player **initial_assignment(Card *card_fetch, Player *player, Result result);
+Player** initial_assignment(Card *card_fetch, Player **player, Result result);
 
 #endif
