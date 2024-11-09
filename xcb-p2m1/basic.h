@@ -1,25 +1,33 @@
 #ifndef BASIC_H
 #define BASIC_H
 
- typedef struct {
-     Card card;
-     int score;
- } Player;
-
- typedef enum {
-    Spades,
-    Hearts,
-    Diamonds,
-    Clubs
-} Suit;
+typedef struct {
+    int players;      
+    int cards;      
+    int decks;              
+    int rounds;            
+    char *filename;  
+    int demo_mode;
+} Result;
 
 typedef struct {
-    Suit suit;
+    int suit;
     int rank;
 } Card;
 
-void print_help();
+ typedef struct {
+     Card **card;
+     Card leader;
+     int score;
+ } Player;
 
-int get(int argc,char *argv[]);
+//void print_help();
+
+Result inputing(int argc,char *argv[]);
+
+void initial_shuffle(Card* card_fetch,int total);
+
+void initial_output(int n,int r,int d,int c,int demo);
 
 #endif
+
