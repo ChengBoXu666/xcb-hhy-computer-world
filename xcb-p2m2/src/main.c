@@ -18,7 +18,18 @@ int main(int argc, char *argv[])
 
     initial_output(n, r, d, c, demo);
 
-    Player **player = malloc((size_t)n * sizeof(Player));
+    Player **player = malloc((size_t)(n + 1) * sizeof(Player *));
+    for (int i = 0; i < n + 1; i++)
+    {
+        player[i] = malloc(sizeof(Player));
+        if (player[i] == NULL)
+        {
+            fprintf(stderr, "Memory allocation failed for player[%d]\n", i);
+            exit(EXIT_FAILURE);
+        }
+    }
+    for (int i = 0; i < result.players + 1; i++)
+        player[i]->card = malloc((long unsigned int)result.cards * sizeof(Card));
 
     Card *card_fetch = (Card *)malloc((size_t)d * 52 * sizeof(Card));
     if (card_fetch == NULL)
@@ -42,7 +53,16 @@ int main(int argc, char *argv[])
 
     initial_shuffle(card_fetch, total);
 
-    player=initial_assignment(card_fetch, player, result);
+    player = initial_assignment(card_fetch, card_discard, player, result);
 
+    player=play(player, card_fetch, card_discard,result);
+
+    free(card_fetch);
+    free(card_discard);
+    for (int i = 0; i < n + 1; i++)
+    {
+        free(player[i]);
+    }
+    free(player);
     return 0;
 }

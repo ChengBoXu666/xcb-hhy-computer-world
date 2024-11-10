@@ -5,7 +5,7 @@
 
 Player **play(Player **player, Card *card_fetch, Card *card_discard, Result result)
 {
-    printf("---- Game start ----");
+    printf("---- Game start ----\n");
     Table table;
     table.current = malloc(sizeof(Card));
     if (table.current == NULL)
@@ -13,17 +13,19 @@ Player **play(Player **player, Card *card_fetch, Card *card_discard, Result resu
         fprintf(stderr, "Memory allocation failed\n");
         exit(EXIT_FAILURE);
     }
+    
     table.player = player[0]->score;
     table.attack = 0;
     table.direction = 1;
-    table.index1 = player[0]->current;
+    table.index1 = player[0]->current1;
+    table.index2 = player[0]->current2;
     for (int i = 1; i < result.players + 1; i++)
         player[i]->number = result.cards;
     table.current->rank = card_fetch[table.index1].rank;
     table.current->suit = card_fetch[table.index1].suit;
-    table.index2 = 0;
     card_discard[table.index2] = card_fetch[table.index1];
     table.index1++;
+    table.index2++;
     printf("First card: ");
     switch (table.current->suit)
     {
@@ -83,7 +85,14 @@ Player **play(Player **player, Card *card_fetch, Card *card_discard, Result resu
         break;
     }
     
-    
+    while (1+1==2) 
+    {
+        int num=0;
+        printf("Player %d current cards: ",table.player);
+        card_output(player,table.player,player[table.player]->number);
+        printf("Player %d plays(Input an integar: 0:no card to play/not play, 1:Card1, 2:Card2, 3:Card3, etc.)",table.player);
+        scanf("%d",&num);printf("\n");
+    }
     return player;
 }
 

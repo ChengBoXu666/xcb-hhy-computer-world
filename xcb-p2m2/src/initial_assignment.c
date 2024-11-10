@@ -3,19 +3,19 @@
 #include <string.h>
 #include "basic.h"
 
-Player** initial_assignment(Card *card_fetch, Player **player, Result result)
+Player **initial_assignment(Card *card_fetch, Card *card_discard, Player **player, Result result)
 {
-    int t = 0;
-    for (int i = 1; i < result.players + 1; i++)
-        player[i]->card = malloc((long unsigned int)result.cards * sizeof(Card *));
+    int t1 = 0, t2 = 0;
     for (int i = 0; i < result.cards; i++)
     {
         for (int j = 1; j < result.players + 1; j++)
         {
             player[j]->card[i] = malloc(sizeof(Card));
-            player[j]->card[i]->rank = card_fetch[t].rank;
-            player[j]->card[i]->suit = card_fetch[t].suit;
-            t++;
+            player[j]->card[i]->rank = card_fetch[t1].rank;
+            player[j]->card[i]->suit = card_fetch[t1].suit;
+            card_fetch[t1].rank = 0;
+            card_fetch[t1].suit = 0;
+            t1++;
         }
     }
 
@@ -23,18 +23,23 @@ Player** initial_assignment(Card *card_fetch, Player **player, Result result)
     for (int i = 1; i < result.players + 1; i++)
     {
         player[i]->first = malloc(sizeof(Card));
-        player[i]->first->rank = card_fetch[t].rank;
-        player[i]->first->suit = card_fetch[t].suit;
+        player[i]->first->rank = card_fetch[t1].rank;
+        player[i]->first->suit = card_fetch[t1].suit;
+        card_fetch[t1].rank = 0;
+        card_fetch[t1].suit = 0;
+        card_discard[t2].rank = player[i]->first->rank;
+        card_discard[t2].suit = player[i]->first->suit;
         if ((player[i]->first->rank > maxrank) || ((player[i]->first->rank == maxrank) && (player[i]->first->suit > maxsuit)))
         {
             maxrank = player[i]->first->rank;
             maxsuit = player[i]->first->suit;
             maxi = i;
         }
-        t++;
-        free(player[i]->first);
+        t1++;
+        t2++;
     }
-    player[0]->current = t;
+    player[0]->current1 = t1;
+    player[0]->current2 = t2;
     player[0]->score = maxi;
     printf("Dealing cards...\n");
     if (result.demo_mode == 1)
@@ -111,7 +116,7 @@ Player** initial_assignment(Card *card_fetch, Player **player, Result result)
     {
 
         printf("Player %d: ", i);
-        switch (player[0]->first->suit)
+        switch (player[i]->first->suit)
         {
         case 1:
             printf("%s", "Spades ");
@@ -126,7 +131,7 @@ Player** initial_assignment(Card *card_fetch, Player **player, Result result)
             printf("%s", "Clubs ");
             break;
         }
-        switch (player[0]->first->rank)
+        switch (player[i]->first->rank)
         {
         case 2:
             printf("%s", "2\n");
@@ -168,7 +173,8 @@ Player** initial_assignment(Card *card_fetch, Player **player, Result result)
             printf("%s", "Ace\n");
             break;
         }
+        free(player[i]->first);
     }
-    printf("The game will start with player %d",maxi);
+    printf("The game will start with player %d\n", maxi);
     return player;
 }
