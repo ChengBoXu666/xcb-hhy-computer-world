@@ -1,0 +1,6 @@
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/onecard.dir
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/ubsan.dir
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/asan.dir
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/msan.dir
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/edit_cache.dir
+/mnt/d/Manuel151/ChengboXu524370910111-p2/build/CMakeFiles/rebuild_cache.dir
