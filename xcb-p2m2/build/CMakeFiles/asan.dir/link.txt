@@ -1,1 +1,0 @@
-clang-14 -fsanitize=address CMakeFiles/asan.dir/src/initial_assignment.c.o CMakeFiles/asan.dir/src/initial_output.c.o CMakeFiles/asan.dir/src/initial_shuffle.c.o CMakeFiles/asan.dir/src/inputing.c.o CMakeFiles/asan.dir/src/main.c.o CMakeFiles/asan.dir/src/play.c.o -o asan  -lm 

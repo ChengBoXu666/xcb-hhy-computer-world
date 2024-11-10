@@ -1,1 +1,0 @@
-clang-14 CMakeFiles/onecard.dir/src/initial_assignment.c.o CMakeFiles/onecard.dir/src/initial_output.c.o CMakeFiles/onecard.dir/src/initial_shuffle.c.o CMakeFiles/onecard.dir/src/inputing.c.o CMakeFiles/onecard.dir/src/main.c.o CMakeFiles/onecard.dir/src/play.c.o -o onecard  -lm 
