@@ -1,1 +1,0 @@
-clang-14 -fsanitize=undefined CMakeFiles/ubsan.dir/src/initial_assignment.c.o CMakeFiles/ubsan.dir/src/initial_output.c.o CMakeFiles/ubsan.dir/src/initial_shuffle.c.o CMakeFiles/ubsan.dir/src/inputing.c.o CMakeFiles/ubsan.dir/src/main.c.o CMakeFiles/ubsan.dir/src/play.c.o -o ubsan  -lm 
