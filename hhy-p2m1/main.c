@@ -82,7 +82,9 @@ void Discard(Card *p_deck, int *p_index_top, int num_discard){
 }
 
 void Init_Deal(){
+    printf("\n");
     printf("Dealing cards...\n");
+    Sleep(2000);
     for(int i = 0; i < num_player; i++){
         player[i].index_top_handcard += count_draw;
         player[i].p_handcard = (Card*)malloc(count_draw*sizeof(Card));
@@ -134,7 +136,9 @@ void Print(int suit, int rank){
 }
 
 int Determine_play_order(){
+    printf("\n");
     printf("Determining play order...\n");
+    Sleep(2000);
     Card *temp = (Card*)malloc(52*sizeof(Card));
     for(int i = 0; i < 52; i++){
         temp[i].suit = i/13 + 1;
@@ -193,15 +197,17 @@ void Init(int *p_r){
     Init_cards();
     Init_players();
     Shuffle(deck,index_top_deck);
+    press_enter_to_continue();
+    system("cls");
 }
 
 void Init_Round(int r, int *p_start_index){
-    system("cls");
     Init_Deal();
     if(r == 1){
         *p_start_index = Determine_play_order();
     } 
     printf("The game will start with player %d\n",*p_start_index+1);
+    press_enter_to_continue();
 }
 
 void Restructure(Card *p_handcard, int index_top, int positon){
@@ -215,38 +221,100 @@ void Restructure(Card *p_handcard, int index_top, int positon){
     p_handcard[index_top].rank = temprank;
 }
 
+void Fetch(Card *p_handcard, int *p_index_top, int num_fetch){
+    printf("Fetching %d cards...\n",num_fetch);
+    Sleep(2000);
+    for(int i = 0; i < num_fetch; i++){
+        p_handcard[*p_index_top].suit = deck[index_top_deck].suit;
+        p_handcard[*p_index_top].rank = deck[index_top_deck].rank;
+        index_top_deck--;
+        (*p_index_top)++;
+    }
+}
+
+int Check(int beforesuit, int beforerank, Card *p_handcard, int index_top, int j){
+    //show the card before
+    printf("card before: ");
+    Print(beforesuit,beforerank);
+    printf("\n");
+    //show the current player's cards
+    int flag = 0;
+    printf("player %d's cards: ",j+1);
+    for(int i = 0; i <= index_top; i++){
+        printf("%d:",i+1);
+        Print(p_handcard[i].suit,p_handcard[i].rank);
+        printf(" ");
+        if(p_handcard[i].suit == beforesuit || p_handcard[i].rank == beforerank){
+            flag = 1;
+        }
+    }
+    printf("\n");
+    return flag;
+}
+
+int Player_action(int beforesuit, int beforerank, Card *p_handcard, int index_top){
+    int choice = 0;
+    printf("choose a card to play: ");
+    scanf("%d",&choice);
+    while(1){
+        if(choice < 1 || choice > index_top+1){
+            printf("Invalid choice, please choose again: ");
+            scanf("%d",&choice);
+        }else if(p_handcard[choice-1].suit != beforesuit && p_handcard[choice-1].rank != beforerank){
+            printf("Invalid choice, please choose again: ");
+            scanf("%d",&choice);
+        }else{
+            break;
+        }
+    }
+    return choice;
+}
+
 void Gameround(int r, int *p_start_index){
     //mark the index of the player now
     int j = *p_start_index;
+    int direction = 1;
 
     //mark the card played before
     //the first card of the deck to initialize the rank and suit
     int beforesuit = deck[index_top_deck].suit;
     int beforerank = deck[index_top_deck].rank;
-    index_top_deck--;
     Discard(deck,&index_top_deck,1);
 
     //start the round
     printf("---- Round %d ----\n",r);
+    Sleep(1000);
     Init_Round(r, p_start_index);
+
+    system("cls");
+    printf("Show the first card: ");
+    Print(beforesuit,beforerank);
+    printf("\n");
+    press_enter_to_continue();
+
+    //the loop for the game round
     //when one player has played all cards, the game ends, break the loop
     while(1){
         system("cls");
-        printf("First card: ");
-        Print(beforesuit,beforerank);
-        printf("\n");
-
-        //ask the current player to play a card
-        printf("your cards: ");
-        for(int k = 0; k <= player[j].index_top_handcard; k++){
-            Print(player[j].p_handcard[k].suit,player[j].p_handcard[k].rank);
-            printf(" ");
+        //show the card before
+        //show the current player's cards
+        int check = Check(beforesuit,beforerank,player[j].p_handcard,player[j].index_top_handcard,j);
+        if(check == 0){
+            printf("Player %d does not have any cards to play\n",j+1);
+            Fetch(player[j].p_handcard,&player[j].index_top_handcard,count_round_draw);
+            printf("Player %d's cards: ",j+1);
+            for(int i = 0; i <= player[j].index_top_handcard; i++){
+                printf("%d:",i+1);
+                Print(player[j].p_handcard[i].suit,player[j].p_handcard[i].rank);
+                printf(" ");
+            }
+            printf("\n");
+            j = (j+direction)%num_player;
+            press_enter_to_continue();
+            continue;
         }
-        printf("\n");
-        int choice = 0;
-        printf("Choose a card to play: ");
-        scanf("%d",&choice);
-        //check if the input is valid
+        //ask the current player to play a card
+        int choice = Player_action(beforesuit,beforerank,player[j].p_handcard,player[j].index_top_handcard);
         //restructure the handcard array 
         Restructure(player[j].p_handcard,player[j].index_top_handcard,choice-1);
         printf("player %d played ",j+1);
@@ -260,6 +328,8 @@ void Gameround(int r, int *p_start_index){
             printf("player %d has no more cards, the game ends\n",j+1);
             break;
         }
+        press_enter_to_continue();
+        j = (j+direction)%num_player;
     }
 }  
 
