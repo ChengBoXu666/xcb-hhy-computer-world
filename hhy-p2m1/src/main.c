@@ -197,7 +197,6 @@ void Init(int *p_r){
     Init_cards();
     Init_players();
     Shuffle(deck,index_top_deck);
-    getchar();
     press_enter_to_continue();
     system("cls");
 }
