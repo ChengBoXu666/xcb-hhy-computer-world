@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
+#include <unistd.h>
 
 //data structures definitions
 typedef struct {
@@ -29,14 +29,15 @@ int const count_round_draw = 2;
 void press_enter_to_continue() {
     printf("Press Enter to continue...");
     while (getchar() != '\n');
+    printf("\n");
 }
 
 void Init_cards(){
     printf("Number of decks: ");
     int x;  //get the import
     scanf("%d",&x);
-    deck = (Card*)malloc(x*52*sizeof(Card));
-    discard = (Card*)malloc((x+1)*52*sizeof(Card));
+    deck = (Card*)malloc((size_t)x*52*sizeof(Card));
+    discard = (Card*)malloc((size_t)(x+1)*52*sizeof(Card));
     for(int i = 0; i < x*52; i++){
         deck[i].suit = i%52/13 + 1;
         deck[i].rank = i%52%13 + 2;
@@ -51,7 +52,7 @@ void Init_players(){
     printf("Number of players: ");
     int x;  //get the import
     scanf("%d",&x);
-    player = (Player*)malloc(x*sizeof(Player));
+    player = (Player*)malloc((size_t)x*sizeof(Player));
     for(int i = 0; i < x; i++){
         player[i].score = 0;
         player[i].index_top_handcard = -1;
@@ -84,10 +85,10 @@ void Discard(Card *p_deck, int *p_index_top, int num_discard){
 void Init_Deal(){
     printf("\n");
     printf("Dealing cards...\n");
-    Sleep(2000);
+    sleep(2);
     for(int i = 0; i < num_player; i++){
         player[i].index_top_handcard += count_draw;
-        player[i].p_handcard = (Card*)malloc(count_draw*sizeof(Card));
+        player[i].p_handcard = (Card*)malloc((size_t)count_draw*sizeof(Card));
         for(int j = 0; j < count_draw; j++){
             player[i].p_handcard[j].suit = deck[index_top_deck-j].suit;
             player[i].p_handcard[j].rank = deck[index_top_deck-j].rank;
@@ -138,7 +139,7 @@ void Print(int suit, int rank){
 int Determine_play_order(){
     printf("\n");
     printf("Determining play order...\n");
-    Sleep(2000);
+    sleep(2);
     Card *temp = (Card*)malloc(52*sizeof(Card));
     for(int i = 0; i < 52; i++){
         temp[i].suit = i/13 + 1;
@@ -198,7 +199,7 @@ void Init(int *p_r){
     Init_players();
     Shuffle(deck,index_top_deck);
     press_enter_to_continue();
-    system("cls");
+    system("clear");
 }
 
 void Init_Round(int r, int *p_start_index){
@@ -223,7 +224,7 @@ void Restructure(Card *p_handcard, int index_top, int positon){
 
 void Fetch(Card *p_handcard, int *p_index_top, int num_fetch){
     printf("Fetching %d cards...\n",num_fetch);
-    Sleep(2000);
+    sleep(2);
     for(int i = 0; i < num_fetch; i++){
         (*p_index_top)++;
         p_handcard[*p_index_top].suit = deck[index_top_deck].suit;
@@ -279,13 +280,13 @@ void Gameround(int r, int *p_start_index){
 
     //start the round
     printf("---- Round %d ----\n",r);
-    Sleep(1000);
+    sleep(1);
     Init_Round(r, p_start_index);
     //mark the index of the player now
     int j = *p_start_index;
     int direction = 1;
 
-    system("cls");
+    system("clear");
     printf("Show the first card: ");
     Print(beforesuit,beforerank);
     printf("\n");
@@ -294,7 +295,7 @@ void Gameround(int r, int *p_start_index){
     //the loop for the game round
     //when one player has played all cards, the game ends, break the loop
     while(1){
-        system("cls");
+        system("clear");
         //show the card before
         //show the current player's cards
         int check = Check(beforesuit,beforerank,player[j].p_handcard,player[j].index_top_handcard,j);
@@ -339,7 +340,7 @@ void Free(){
 }
 
 int main(void){
-    srand(time(0));
+    srand((unsigned int)time(NULL));
     //roundnumber
     int r;  
     //the index of the player who will start the game
