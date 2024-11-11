@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     Result result = inputing(argc, argv);
+    if (result.demo_mode == -1) return 0;
     int n = 0, r = 0, d = 0, c = 0, total = 0, demo = 0;
     n = result.players;
     r = result.rounds;
@@ -13,12 +14,14 @@ int main(int argc, char *argv[])
     c = result.cards;
     demo = result.demo_mode;
     total = n * d;
-
     srand((unsigned int)time(NULL));
-
     initial_output(n, r, d, c, demo);
-
     Player **player = malloc((size_t)(n + 1) * sizeof(Player *));
+    if (player == NULL)
+        {
+            fprintf(stderr, "Memory allocation failed for player\n");
+            exit(EXIT_FAILURE);
+        }
     for (int i = 0; i < n + 1; i++)
     {
         player[i] = malloc(sizeof(Player));
@@ -29,8 +32,14 @@ int main(int argc, char *argv[])
         }
     }
     for (int i = 0; i < result.players + 1; i++)
+    {
         player[i]->card = malloc((long unsigned int)result.cards * sizeof(Card));
-
+        if (player[i]->card == NULL)
+        {
+            fprintf(stderr, "Memory allocation failed for player[%d]->card\n", i);
+            exit(EXIT_FAILURE);
+        }
+    }
     Card *card_fetch = (Card *)malloc((size_t)d * 52 * sizeof(Card));
     if (card_fetch == NULL)
     {
@@ -55,7 +64,7 @@ int main(int argc, char *argv[])
 
     player = initial_assignment(card_fetch, card_discard, player, result);
 
-    player=play(player, card_fetch, card_discard,result);
+    player = play(player, card_fetch, card_discard, result);
 
     free(card_fetch);
     free(card_discard);

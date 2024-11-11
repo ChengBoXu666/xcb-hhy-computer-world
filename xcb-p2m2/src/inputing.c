@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "basic.h"
-
-/*void print_help() {
-    printf("-h|--help              Print this help message\n");
-    printf("--log filename         Write the logs in filename (default: onecard.log)\n");
-    printf("-n n|--player-number=n Specify number of players, n must be larger than 2 (default: 4)\n");
-    printf("-c c|--initial-cards=c Deal c cards per player, c must be at least 2 (default: 5)\n");
-    printf("-d d|--decks=d         Use d decks of 52 cards each, d must be at least 2 (default: 2)\n");
-    printf("-r r|--rounds=r        Play r rounds, r must be at least 1 (default: 1)\n");
-    printf("-a|--auto              Run in demo mode\n");
-}*/
-
 Result inputing(int argc, char *argv[])
 {
     int players = 4;
@@ -24,31 +12,41 @@ Result inputing(int argc, char *argv[])
     Result result;
     for (int i = 1; i < argc; i++)
     {
-        /*if (strcmp(argv[i],"-h")==0 || strcmp(argv[i],"--help")==0) {
-            print_help();
-            return 0;
-        }*/
-        if (strcmp(argv[i], "--log") == 0 && i + 1 < argc)
+        if ((argv[i][0] == '-' && argv[i][1] == 'h') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'h' && argv[i][3] == 'e' && argv[i][4] == 'l' && argv[i][5] == 'p'))
         {
-            filename = argv[++i];
+            printf("-h|--help              Print this help message\n");
+            printf("--log filename         Write the logs in filename (default: onecard.log)\n");
+            printf("-n n|--player-number=n Specify number of players, n must be larger than 2 (default: 4)\n");
+            printf("-c c|--initial-cards=c Deal c cards per player, c must be at least 2 (default: 5)\n");
+            printf("-d d|--decks=d         Use d decks of 52 cards each, d must be at least 2 (default: 2)\n");
+            printf("-r r|--rounds=r        Play r rounds, r must be at least 1 (default: 1)\n");
+            printf("-a|--auto              Run in demo mode\n");
+            result.demo_mode = -1;
+            result.cards = cards; result.decks = decks; result.filename = filename; result.players = players; result.rounds = rounds;
+            return result;
         }
-        else if (strncmp(argv[i], "-n", 2) == 0 || strncmp(argv[i], "--player-number=", 16) == 0)
+        if (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'l' && argv[i][3] == 'o' && argv[i][4] == 'g' && argv[i][5] == 0)
         {
-            players = atoi(argv[i] + ((strncmp(argv[i], "-n", 2) == 0 ? 2 : 16)));
+            if (i + 1 < argc)
+                filename = argv[++i];
         }
-        else if (strncmp(argv[i], "-c", 2) == 0 || strncmp(argv[i], "--initial-cards=", 16) == 0)
+        else if ((argv[i][0] == '-' && argv[i][1] == 'n') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'p' && argv[i][3] == 'l' && argv[i][4] == 'a' && argv[i][5] == 'y' && argv[i][6] == 'e' && argv[i][7] == 'r' && argv[i][8] == '-' && argv[i][9] == 'n' && argv[i][10] == 'u' && argv[i][11] == 'm' && argv[i][12] == 'b' && argv[i][13] == 'e' && argv[i][14] == 'r' && argv[i][15] == '='))
         {
-            cards = atoi(argv[i] + ((strncmp(argv[i], "-c", 2) == 0 ? 2 : 16)));
+            players = atoi(argv[i] + ((argv[i][1] == 'n') ? 3 : 16));
         }
-        else if (strncmp(argv[i], "-d", 2) == 0 || strncmp(argv[i], "--decks=", 8) == 0)
+        else if ((argv[i][0] == '-' && argv[i][1] == 'c') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'i' && argv[i][3] == 'n' && argv[i][4] == 'i' && argv[i][5] == 't' && argv[i][6] == 'i' && argv[i][7] == 'a' && argv[i][8] == 'l' && argv[i][9] == '-' && argv[i][10] == 'c' && argv[i][11] == 'a' && argv[i][12] == 'r' && argv[i][13] == 'd' && argv[i][14] == 's' && argv[i][15] == '='))
         {
-            decks = atoi(argv[i] + ((strncmp(argv[i], "-d", 2) == 0 ? 2 : 8)));
+            cards = atoi(argv[i] + ((argv[i][1] == 'c') ? 3 : 16));
         }
-        else if (strncmp(argv[i], "-r", 2) == 0 || strncmp(argv[i], "--rounds=", 9) == 0)
+        else if ((argv[i][0] == '-' && argv[i][1] == 'd') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'd' && argv[i][3] == 'e' && argv[i][4] == 'c' && argv[i][5] == 'k' && argv[i][6] == 's' && argv[i][7] == '='))
         {
-            rounds = atoi(argv[i] + ((strncmp(argv[i], "-r", 2) == 0 ? 2 : 9)));
+            decks = atoi(argv[i] + ((argv[i][1] == 'd') ? 3 : 8));
         }
-        else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--auto") == 0)
+        else if ((argv[i][0] == '-' && argv[i][1] == 'r') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'r' && argv[i][3] == 'o' && argv[i][4] == 'u' && argv[i][5] == 'n' && argv[i][6] == 'd' && argv[i][7] == 's' && argv[i][8] == '='))
+        {
+            rounds = atoi(argv[i] + ((argv[i][1] == 'r') ? 3 : 9));
+        }
+        else if ((argv[i][0] == '-' && argv[i][1] == 'a') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'a' && argv[i][3] == 'u' && argv[i][4] == 't' && argv[i][5] == 'o'))
         {
             demo_mode = 1;
         }
