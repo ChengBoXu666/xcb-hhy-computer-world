@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "basic.h"
-
 void initial_shuffle(Card *card_fetch, int total)
 {
     printf("Shuffling cards...\n");
