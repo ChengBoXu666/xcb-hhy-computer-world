@@ -45,7 +45,7 @@ typedef struct
 
 Result inputing(int argc, char *argv[]);
 
-void initial_shuffle(Card *card_fetch, Result result);
+void shuffle(Card *card, int total, int mode);
 
 void initial_output(Result result);
 
@@ -55,9 +55,11 @@ Player **play(Player **player, Card *card_fetch, Card *card_discard, Result resu
 
 void cards_output(Player **player, int index_player, int num_card);
 
-void initial_sort(Player **players,Result result);
+void sort(Player **players,int i);
 
 void card_output(int suit, int rank);
+
+int judge(int n);
 
 #endif
 

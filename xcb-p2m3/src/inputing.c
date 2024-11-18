@@ -21,7 +21,11 @@ Result inputing(int argc, char *argv[])
             printf("-r r|--rounds=r        Play r rounds, r must be at least 1 (default: 1)\n");
             printf("-a|--auto              Run in demo mode\n");
             result.demo_mode = -1;
-            result.cards = cards; result.decks = decks; result.filename = filename; result.players = players; result.rounds = rounds;
+            result.cards = cards;
+            result.decks = decks;
+            result.filename = filename;
+            result.players = players;
+            result.rounds = rounds;
             return result;
         }
         if (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'l' && argv[i][3] == 'o' && argv[i][4] == 'g' && argv[i][5] == 0)
@@ -58,4 +62,3 @@ Result inputing(int argc, char *argv[])
     result.demo_mode = demo_mode;
     return result;
 }
-
