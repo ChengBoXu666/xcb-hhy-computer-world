@@ -1,20 +1,20 @@
 #include "onecard.h"
 
-void sort(Player **player, int i)
+void sort(Player *player)
 {
 
-    for (int j = 0; j < player[i]->number; j++)
+    for (int j = 0; j < player->number; j++)
     {
-        for (int k = j + 1; k < player[i]->number; k++)
+        for (int k = j + 1; k < player->number; k++)
         {
-            if ((player[i]->card[j]->suit > player[i]->card[k]->suit) || ((player[i]->card[j]->suit == player[i]->card[k]->suit) && (player[i]->card[j]->rank > player[i]->card[k]->rank)))
+            if ((player->card[j]->suit > player->card[k]->suit) || ((player->card[j]->suit == player->card[k]->suit) && (player->card[j]->rank > player->card[k]->rank)))
             {
-                int temp_suit = player[i]->card[j]->suit;
-                int temp_rank = player[i]->card[j]->rank;
-                player[i]->card[j]->suit = player[i]->card[k]->suit;
-                player[i]->card[j]->rank = player[i]->card[k]->rank;
-                player[i]->card[k]->suit = temp_suit;
-                player[i]->card[k]->rank = temp_rank;
+                int temp_suit = player->card[j]->suit;
+                int temp_rank = player->card[j]->rank;
+                player->card[j]->suit = player->card[k]->suit;
+                player->card[j]->rank = player->card[k]->rank;
+                player->card[k]->suit = temp_suit;
+                player->card[k]->rank = temp_rank;
             }
         }
     }

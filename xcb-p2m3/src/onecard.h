@@ -19,13 +19,18 @@ typedef struct
 
 typedef struct
 {
+    int t1;
+    int t2;
+    int mini;
+} Tran;
+typedef struct
+{
     int suit;
     int rank;
 } Card;
 
 typedef struct
 {
-    int player;
     int direction;
     int attack;
     int index1;
@@ -33,14 +38,15 @@ typedef struct
     Card *current;
 } Table;
 
-typedef struct
+typedef struct Player
 {
     Card **card;
     Card *first;
     int score;
-    int current1;
-    int current2;
     int number;
+    int index;
+    struct Player *next; 
+    struct Player *prev;
 } Player;
 
 Result inputing(int argc, char *argv[]);
@@ -49,13 +55,13 @@ void shuffle(Card *card, int total, int mode);
 
 void initial_output(Result result);
 
-Player **initial_assignment(Card *card_fetch, Card *card_discard, Player **player, Result result);
+Tran initial_assignment(Card *card_fetch, Card *card_discard, Player *player, Result result,Tran trans);
 
-Player **play(Player **player, Card *card_fetch, Card *card_discard, Result result);
+void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tran trans);
 
-void cards_output(Player **player, int index_player, int num_card);
+void cards_output(Player *player, int num_card);
 
-void sort(Player **players,int i);
+void sort(Player *players);
 
 void card_output(int suit, int rank);
 

@@ -1,11 +1,11 @@
 #include "onecard.h"
 
-void cards_output(Player **player, int index_player, int num_card)
+void cards_output(Player *player,int num_card)
 {
     for (int i = 0; i < num_card; i++)
     {
         printf("Card%d: [", i + 1);
-        switch (player[index_player]->card[i]->suit)
+        switch (player->card[i]->suit)
         {
         case 1:
             printf("%s", "Spades ");
@@ -20,7 +20,7 @@ void cards_output(Player **player, int index_player, int num_card)
             printf("%s", "Clubs ");
             break;
         }
-        switch (player[index_player]->card[i]->rank)
+        switch (player->card[i]->rank)
         {
         case 2:
             printf("%s", "2]; ");
