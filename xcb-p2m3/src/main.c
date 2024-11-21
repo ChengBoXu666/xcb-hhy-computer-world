@@ -105,9 +105,9 @@ int main(int argc, char *argv[])
             system("clear");
         free(card_fetch);
         free(card_discard);
-        for (int i = 0; i < result.players; i++)
+        for (int i = 0; i < result.players-1; i++)
         {
-            for (int j = 0; j < head->number; j++)
+            for (int j = 0; j < player->number; j++)
                 free(player->card[j]);
             free(player->card);
             Player* temp;
@@ -115,6 +115,8 @@ int main(int argc, char *argv[])
             player=player->next;
             free(temp);
         }
+        for (int j = 0; j < player->number; j++)
+            free(player->card[j]);
         free(player);
     }
     if (result.demo_mode == 0)

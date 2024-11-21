@@ -9,7 +9,7 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
     {
         fprintf(stderr, "Memory allocation failed\n");
         exit(EXIT_FAILURE);
-    }
+    } 
     table.attack = 0;
     table.direction = 1;
     table.index1 = trans.t1;
@@ -67,9 +67,7 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
                 judge = 1;
                 table.attack += table.current->rank;
             }
-
-            if (table.current->rank == 7)
-                table.attack = 0;
+            if (table.current->rank == 7) table.attack = 0;
             if (table.current->rank == 11)
             {
                 judge = 1;
@@ -158,15 +156,16 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
             player=player->next->next;
             table.direction = 1;
         }
-        else if (table.direction == -1) 
-            player=player->prev;
-        else 
-            player=player->next; 
+        else if (table.direction == -1)  player=player->prev;
+        else  player=player->next; 
         if (table.current->rank != 2 && table.current->rank != 3)
             table.attack = 0;
     }
     for (int i = 0; i < result.players; i++)
+    {
         player->score = (-1) * player->number;
+        player=player->next;
+    }
     free(table.current);
 }
 
