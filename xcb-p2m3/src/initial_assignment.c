@@ -44,7 +44,7 @@ Tran initial_assignment(Card *card_fetch, Card *card_discard, Player *player, Re
     trans.t2= t2;
     trans.mini = mini;
     printf("Dealing cards...\n");
-    // sleep(2);
+    // if (result.demo_mode == 0) sleep(2);
     for (int i = 0; i < result.players; i++)
     {
         sort(player);
@@ -61,7 +61,7 @@ Tran initial_assignment(Card *card_fetch, Card *card_discard, Player *player, Re
     }
     printf("\n");
     printf("Determining the playing order...\n");
-    // sleep(2);
+    // if (result.demo_mode == 0) sleep(2);
     for (int i = 0; i < result.players; i++)
     {
         printf("Player %d: ", i+1);

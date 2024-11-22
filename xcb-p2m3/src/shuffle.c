@@ -3,7 +3,6 @@
 void shuffle(Card *card, int total, int mode)
 {
     printf("Shuffling cards...\n");
-    sleep(2);
     for (int j = 0; j < 7; j++)
     {
         for (int i = total - 1; i > 0; i--)
@@ -20,7 +19,6 @@ void shuffle(Card *card, int total, int mode)
     if (mode == 1)
     {
         printf("Shuffle result: ");
-        sleep(2);
         for (int i = 0; i < total - 1; i++)
         {
             card_output(card[i].suit, card[i].rank);

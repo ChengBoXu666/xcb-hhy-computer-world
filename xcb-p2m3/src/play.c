@@ -1,50 +1,45 @@
 #include "onecard.h"
-void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tran trans)
+void play(Player *player, Card *card_fetch, Card *card_discard, Result result, Tran trans)
 {
     printf("---- Game start ----\n");
-    // sleep(2);
+    // if (result.demo_mode == 0) sleep(2);
     Table table;
-    table.current = malloc(sizeof(Card));
-    if (table.current == NULL)
-    {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    } 
-    table.attack = 0;
-    table.direction = 1;
-    table.index1 = trans.t1;
-    table.index2 = trans.t2;
+    table = initial_table(card_fetch, card_discard, trans, result);
+    int currentjudge = 0;
+    int flag = 1, num = 0;
     while (1)
     {
-        table.current->rank = card_fetch[table.index1].rank;
-        table.current->suit = card_fetch[table.index1].suit;
-        card_discard[table.index2] = card_fetch[table.index1];
-        table.index1++;
-        table.index2++;
-        if (judge(table.current->rank) == 1)
-            break;
-    }
-    printf("First card: ");
-    card_output(table.current->suit, table.current->rank);
-    printf("\n\n");
-    int num = 0, flag = 0, judge = 0;
-    while (1)
-    {
-        flag = 1;
         printf("Player %d's turn\n", player->index);
         printf("\n");
+        if (result.demo_mode == 0)
+            sleep(1);
         printf("Player %d current cards: ", player->index);
-        cards_output(player,player->number);
+        cards_output(player, player->number);
         printf("\n");
-        printf("Please input your choice(Input an integar: 0:no card to play/not play, 1:Card1, 2:Card2, 3:Card3, etc.): ");
-        scanf("%d", &num);
-        printf("\n");
+        if (result.demo_mode == 0)
+        {
+            sleep(1);
+            printf("Please input your choice(Input an integar: 0:no card to play/not play, 1:Card1, 2:Card2, 3:Card3, etc.): ");
+            scanf("%d", &num);
+            printf("\n");
+        }
+        else
+        {
+            for (int i = 1; i < player->number + 1; i++)
+                if (!(((player->card[i - 1]->rank != table.current->rank) && (player->card[i - 1]->suit != table.current->suit)) || ((table.attack != 0) && (player->card[i - 1]->rank != 2 && player->card[i - 1]->rank != 3 && player->card[i - 1]->rank != 7 && player->card[i - 1]->rank != 11 && player->card[i - 1]->rank != 12 && currentjudge == 1))))
+                {
+                    num = i;
+                    break;
+                }
+            if (num == 0)
+                printf("Player %d has no valid card to play\n\n", player->index);
+        }
         if (num == 0)
         {
             if (table.attack == 0)
                 table.attack = 1;
         }
-        else if ((num > player->number) || (((player->card[num - 1]->rank != table.current->rank) && (player->card[num - 1]->suit != table.current->suit)) || ((table.attack != 0) && (player->card[num - 1]->rank != 2 && player->card[num - 1]->rank != 3 && player->card[num - 1]->rank != 7 && player->card[num - 1]->rank != 11 && player->card[num - 1]->rank != 12 && judge == 1))))
+        else if ((num > player->number) || (((player->card[num - 1]->rank != table.current->rank) && (player->card[num - 1]->suit != table.current->suit)) || ((table.attack != 0) && (player->card[num - 1]->rank != 2 && player->card[num - 1]->rank != 3 && player->card[num - 1]->rank != 7 && player->card[num - 1]->rank != 11 && player->card[num - 1]->rank != 12 && currentjudge == 1))))
         {
             printf("Invalid card! You are regarded as giving up this turn!\n\n");
             if (table.attack == 0)
@@ -64,23 +59,26 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
             table.index2++;
             if (table.current->rank == 2 || table.current->rank == 3)
             {
-                judge = 1;
+                currentjudge = 1;
                 table.attack += table.current->rank;
             }
-            if (table.current->rank == 7) table.attack = 0;
+            if (table.current->rank == 7)
+                table.attack = 0;
             if (table.current->rank == 11)
             {
-                judge = 1;
+                currentjudge = 1;
                 table.direction = 2 * table.direction;
             }
             if (table.current->rank == 12)
             {
                 table.direction = (-1) * table.direction;
-                judge = 1;
+                currentjudge = 1;
             }
             printf("Player %d plays card: ", player->index);
             card_output(table.current->suit, table.current->rank);
-            printf("\n");
+            printf("\n\n");
+            if (result.demo_mode == 0)
+                sleep(1);
         }
         if (flag == 0 || num == 0)
             player->number = table.attack + player->number;
@@ -104,7 +102,7 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
         }
         if ((table.attack != 0) && ((flag == 0 || num == 0)))
         {
-            judge = 0;
+            currentjudge = 0;
             printf("Player %d draws %d cards: ", player->index, table.attack);
             for (int i = 0; i < table.attack; i++)
             {
@@ -115,9 +113,9 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
                 if (table.index1 == 52 * result.decks)
                 {
                     printf("Stock pile exhausted. Shuffling the discard pile and restore the stock pile\n\n");
-                    shuffle(card_discard, table.index2 - 1, 0);
+                    shuffle(card_discard, table.index2, 0);
                     table.index1 = 0;
-                    for (int j = 0; j < table.index2 - 1; j++)
+                    for (int j = 0; j < table.index2; j++)
                     {
                         card_fetch[j] = card_discard[j];
                         card_discard[j].rank = 0;
@@ -127,15 +125,21 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
                 }
             }
             table.attack = 0;
-            printf("\n");
+            printf("\n\n");
         }
-        sleep(4);
+        if (result.demo_mode == 0)
+            sleep(4);
         if (player->number == 0)
         {
-            printf("Player %d wins!\n", player->index);
-            sleep(4);
             if (result.demo_mode == 0)
+                sleep(2);
+            printf("Player %d wins!\n\n", player->index);
+
+            if (result.demo_mode == 0)
+            {
                 system("clear");
+                sleep(4);
+            }
             break;
         }
         sort(player);
@@ -148,28 +152,27 @@ void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tr
             printf("Total attact number is %d\n\n", table.attack);
         if (table.direction == -2)
         {
-            player=player->prev->prev;
+            player = player->prev->prev;
             table.direction = -1;
         }
         else if (table.direction == 2)
         {
-            player=player->next->next;
+            player = player->next->next;
             table.direction = 1;
         }
-        else if (table.direction == -1)  player=player->prev;
-        else  player=player->next; 
+        else if (table.direction == -1)
+            player = player->prev;
+        else
+            player = player->next;
         if (table.current->rank != 2 && table.current->rank != 3)
             table.attack = 0;
+        flag = 1;
+        num = 0;
     }
     for (int i = 0; i < result.players; i++)
     {
         player->score = (-1) * player->number;
-        player=player->next;
+        player = player->next;
     }
     free(table.current);
 }
-
-
-
-
-

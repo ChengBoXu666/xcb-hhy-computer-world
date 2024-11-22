@@ -13,12 +13,17 @@ int main(int argc, char *argv[])
         return 0;
     }
     int *array = (int *)malloc((size_t)(result.players) * sizeof(int));
-
+    if (array == NULL)  
+    {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i < result.players; i++) array[i] = 0;
     for (int k = 0; k < result.rounds; k++)
     {
         printf("Round %d\n", k + 1);
         printf("\n");
-        // sleep(2);
+        // if (result.demo_mode == 0) sleep(2);
         Player *head = NULL, *tail = NULL;
         for (int i = 0; i < result.players; i++)
         {
@@ -55,9 +60,12 @@ int main(int argc, char *argv[])
                 tail = new_player;
             }
         }
-        head->prev = tail;  tail->next = head;
-        Player* player;
-        player=head;
+        if (head)
+            head->prev = tail;
+        if (tail)
+            tail->next = head;
+        Player *player=NULL;
+        player = head;
         Card *card_fetch = (Card *)malloc((size_t)result.decks * 52 * sizeof(Card));
         if (card_fetch == NULL)
         {
@@ -78,14 +86,15 @@ int main(int argc, char *argv[])
             card_fetch[i].rank = i % 52 % 13 + 2;
         }
         shuffle(card_fetch, result.decks * 52, result.demo_mode);
-        Tran trans;
-        trans = initial_assignment(card_fetch, card_discard, head, result,trans);
+        Tran trans = {0, 0, 0};
+        trans = initial_assignment(card_fetch, card_discard, head, result, trans);
         for (int i = 0; i < result.players; i++)
         {
-            if (player->index == trans.mini+1) break;
+            if (player->index == trans.mini + 1)
+                break;
             player = player->next;
         }
-        play(player,card_fetch, card_discard, result, trans);
+        play(player, card_fetch, card_discard, result, trans);
         for (int i = 0; i < result.players; i++)
         {
             array[i] += head->score;
@@ -100,23 +109,26 @@ int main(int argc, char *argv[])
         }
         printf("Round %d ends.\n", k + 1);
         printf("\n");
-        sleep(7);
         if (result.demo_mode == 0)
+        {
+            sleep(7);
             system("clear");
+        }
         free(card_fetch);
         free(card_discard);
-        for (int i = 0; i < result.players-1; i++)
+        for (int i = 0; i < result.players - 1; i++)
         {
             for (int j = 0; j < player->number; j++)
                 free(player->card[j]);
             free(player->card);
-            Player* temp;
-            temp=player;
-            player=player->next;
+            Player *temp=NULL;
+            temp = player;
+            player = player->next;
             free(temp);
         }
         for (int j = 0; j < player->number; j++)
             free(player->card[j]);
+        free(player->card);
         free(player);
     }
     if (result.demo_mode == 0)
