@@ -7,4 +7,3 @@ int judge(int n) // to shorten the function "play"
     else
         return 0;
 }
-

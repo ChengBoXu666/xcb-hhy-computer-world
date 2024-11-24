@@ -1,10 +1,11 @@
 #include "onecard.h"
 
-void cards_output(Player *player, int num_card, FILE *file) //used to output a series of cards, especially for the player's cards
+void cards_output(Player *player, int num_card, FILE *file) // used to output a series of cards, especially for the player's cards
 {
     for (int i = 0; i < num_card; i++)
     {
-        printf("Card%d: [", i + 1);fprintf(file, "Card%d: [", i + 1);
+        printf("Card%d: [", i + 1);
+        fprintf(file, "Card%d: [", i + 1);
         switch (player->card[i]->suit)
         {
         case 1:

@@ -7,8 +7,8 @@ Result inputing(int argc, char *argv[]) // read arguments from command line
     int decks = 2;
     int rounds = 1;
     char *filename = "onecard.log";
-    int demo_mode = 0;   // initial default value
-    Result result; 
+    int demo_mode = 0; // initial default value
+    Result result;
     for (int i = 1; i < argc; i++)
     {
         if ((argv[i][0] == '-' && argv[i][1] == 'h') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'h' && argv[i][3] == 'e' && argv[i][4] == 'l' && argv[i][5] == 'p'))

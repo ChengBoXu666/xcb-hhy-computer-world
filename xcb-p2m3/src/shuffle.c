@@ -3,7 +3,7 @@ void shuffle(Card *card, int total, int mode, FILE *file) // shuffle the cards
 {
     printf("Shuffling cards...\n");
     fprintf(file, "Shuffling cards...\n");
-    if (mode == 0) 
+    if (mode == 0)
         sleep(2);
     for (int j = 0; j < 7; j++)
     {

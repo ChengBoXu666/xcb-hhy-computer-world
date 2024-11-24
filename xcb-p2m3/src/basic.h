@@ -6,7 +6,6 @@
 #include <unistd.h>
 #include <string.h>
 
-
 typedef struct
 {
     int suit;
@@ -30,19 +29,18 @@ typedef struct Player
     int score;
     int number;
     int index;
-    struct Player *next; 
+    struct Player *next;
     struct Player *prev;
 } Player;
 
 Result inputing(int argc, char *argv[]);
 
-void shuffle(Card *card, int total, int mode,FILE *file);
+void shuffle(Card *card, int total, int mode, FILE *file);
 
-void initial_output(Result result,FILE *file);
+void initial_output(Result result, FILE *file);
 
-void cards_output(Player *player, int num_card,FILE *file);
+void cards_output(Player *player, int num_card, FILE *file);
 
-void card_output(int suit, int rank,FILE *file);
+void card_output(int suit, int rank, FILE *file);
 
 #endif
-
