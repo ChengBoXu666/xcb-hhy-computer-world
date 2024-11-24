@@ -1,6 +1,6 @@
 #include "onecard.h"
 
-void sort(Player *player)
+void sort(Player *player)// sort the cards in the order given in p2 document
 {
 
     for (int j = 0; j < player->number; j++)

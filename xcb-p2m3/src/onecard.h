@@ -17,9 +17,9 @@ typedef struct
     Card *current;
 } Table;
 
-Table initial_table(Card *card_fetch, Card *card_discard, Tran trans,Result result);
+Table initial_table(Card *card_fetch, Card *card_discard, Tran trans,Result result,FILE *file);
 
-void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tran trans);
+void play(Player *player, Card *card_fetch, Card *card_discard, Result result,Tran trans,FILE *file);
 
 int judge(int n);
 

@@ -1,14 +1,14 @@
 #include "onecard.h"
 
-Result inputing(int argc, char *argv[])
+Result inputing(int argc, char *argv[]) // read arguments from command line
 {
     int players = 4;
     int cards = 5;
     int decks = 2;
     int rounds = 1;
     char *filename = "onecard.log";
-    int demo_mode = 0;
-    Result result;
+    int demo_mode = 0;   // initial default value
+    Result result; 
     for (int i = 1; i < argc; i++)
     {
         if ((argv[i][0] == '-' && argv[i][1] == 'h') || (argv[i][0] == '-' && argv[i][1] == '-' && argv[i][2] == 'h' && argv[i][3] == 'e' && argv[i][4] == 'l' && argv[i][5] == 'p'))
@@ -54,7 +54,7 @@ Result inputing(int argc, char *argv[])
             demo_mode = 1;
         }
     }
-    result.cards = cards;
+    result.cards = cards; // store the values in the result struct
     result.decks = decks;
     result.filename = filename;
     result.players = players;

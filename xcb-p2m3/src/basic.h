@@ -36,13 +36,13 @@ typedef struct Player
 
 Result inputing(int argc, char *argv[]);
 
-void shuffle(Card *card, int total, int mode);
+void shuffle(Card *card, int total, int mode,FILE *file);
 
-void initial_output(Result result);
+void initial_output(Result result,FILE *file);
 
-void cards_output(Player *player, int num_card);
+void cards_output(Player *player, int num_card,FILE *file);
 
-void card_output(int suit, int rank);
+void card_output(int suit, int rank,FILE *file);
 
 #endif
 

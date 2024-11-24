@@ -15,7 +15,7 @@ typedef struct
     int mini;
 } Tran;
 
-Tran initial_assignment(Card *card_fetch, Card *card_discard, Player *player, Result result,Tran trans);
+Tran initial_assignment(Card *card_fetch, Card *card_discard, Player *player, Result result,Tran trans,FILE *file);
 
 void sort(Player *players);
 
