@@ -22,15 +22,15 @@ typedef struct
     int demo_mode;
 } Result;
 
-typedef struct Player
+typedef struct _Player
 {
     Card **card;
     Card *first;
     int score;
     int number;
     int index;
-    struct Player *next;
-    struct Player *prev;
+    struct _Player *next;
+    struct _Player *prev;
 } Player;
 
 Result inputing(int argc, char *argv[]);
