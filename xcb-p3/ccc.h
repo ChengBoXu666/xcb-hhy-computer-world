@@ -9,68 +9,69 @@
 #include <thread>
 #include <vector>
 
-class Vehicle {
+class Vehicle
+{
 protected:
-    std::string vehicleType;   
-    double parkingRate;         
-    std::time_t arrivalTime;    
-    double duration;           
-    std::string parkingSpot;    
+    std::string vehicleType;
+    double parkingRate;
+    std::time_t arrivalTime;
+    std::string parkingSpot;
 
 public:
+    double duration;
     Vehicle(std::string type, double rate, double parkDuration, std::string spot);
-    virtual ~Vehicle() {}
+    virtual ~Vehicle();
 
     virtual double calculateParkingFee();
-    virtual void displayTicket(bool isDeparture = false);
+    virtual void displayTicket(bool isDeparture);
 };
 
-
-class Van : public Vehicle {
+class Van : public Vehicle
+{
 public:
     Van(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture = false) override;
+    void displayTicket(bool isDeparture) override;
 };
 
-
-class Bicycle : public Vehicle {
+class Bicycle : public Vehicle
+{
 public:
     Bicycle(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture = false) override;
+    void displayTicket(bool isDeparture) override;
 };
 
-
-class Car : public Vehicle {
+class Car : public Vehicle
+{
 public:
     Car(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture = false) override;
+    void displayTicket(bool isDeparture) override;
 };
 
-
-class Motorbike : public Vehicle {
+class Motorbike : public Vehicle
+{
 public:
     Motorbike(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture = false) override;
+    void displayTicket(bool isDeparture) override;
 };
 
-
-class ParkingLot {
+class ParkingLot
+{
 private:
-    std::vector<bool> floor1Spots;  
-    std::vector<bool> floor2Spots;  
-    int totalVehicles;              
-    int floor1Capacity;           
-    int floor2Capacity;            
+    std::vector<bool> floor1Spots;
+    std::vector<bool> floor2Spots;
+    int floor1Capacity;
+    int floor2Capacity;
 
 public:
+    int totalVehicles;
     ParkingLot(int floor1SpotsCount, int floor2SpotsCount);
-    std::string parkVehicle(Vehicle* vehicle);  
-    void leaveVehicle(std::string parkingSpot); 
-    bool isFull();                            
-    int getTotalVehicles() const;           
-    void reset();                              
+    std::string parkVehicle(Vehicle *vehicle);
+    void leaveVehicle(std::string parkingSpot);
+    bool isFull();
+    int getTotalVehicles() const;
+    void reset();
 };
 
-void simulateVehicleParking(ParkingLot& parkinglot, Vehicle* vehicle);
+void simulateVehicleParking(ParkingLot &parkinglot, Vehicle *vehicle);
 
-#endif 
+#endif
