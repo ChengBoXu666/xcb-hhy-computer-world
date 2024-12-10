@@ -13,45 +13,44 @@ class Vehicle
 {
 protected:
     std::string vehicleType;
-    double parkingRate;
+    double parkingFee;
     std::time_t arrivalTime;
-    std::string parkingSpot;
-
-public:
     double duration;
-    Vehicle(std::string type, double rate, double parkDuration, std::string spot);
+    std::string parkingSpot;
+public:
+    Vehicle(std::string type, double fee, double parkDuration, std::string spot);
     virtual ~Vehicle();
-
+    double getDuration(Vehicle *vehicle);
     virtual double calculateParkingFee();
-    virtual void displayTicket(bool isDeparture);
+    virtual void display(bool isDeparture);
 };
 
 class Van : public Vehicle
 {
 public:
-    Van(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture) override;
+    Van(std::string spot);
+    void display(bool isDeparture) override;
 };
 
 class Bicycle : public Vehicle
 {
 public:
-    Bicycle(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture) override;
+    Bicycle(std::string spot);
+    void display(bool isDeparture) override;
 };
 
 class Car : public Vehicle
 {
 public:
-    Car(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture) override;
+    Car(std::string spot);
+    void display(bool isDeparture) override;
 };
 
 class Motorbike : public Vehicle
 {
 public:
-    Motorbike(double parkDuration, std::string spot);
-    void displayTicket(bool isDeparture) override;
+    Motorbike(std::string spot);
+    void display(bool isDeparture) override;
 };
 
 class ParkingLot
@@ -61,17 +60,14 @@ private:
     std::vector<bool> floor2Spots;
     int floor1Capacity;
     int floor2Capacity;
-
+    int total;
 public:
-    int totalVehicles;
     ParkingLot(int floor1SpotsCount, int floor2SpotsCount);
     std::string parkVehicle(Vehicle *vehicle);
-    void leaveVehicle(std::string parkingSpot);
+    void freeVehicle(std::string parkingSpot);
     bool isFull();
-    int getTotalVehicles() const;
-    void reset();
 };
 
-void simulateVehicleParking(ParkingLot &parkinglot, Vehicle *vehicle);
+void Parking(ParkingLot &parkinglot, Vehicle *vehicle);
 
 #endif
