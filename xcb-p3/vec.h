@@ -1,26 +1,20 @@
 #ifndef VEC_H
 #define VEC_H
 #include <cmath>
-#define PI acos(-1)
+#define PI (float)acos(-1)
 
 class Vec {
    private:
-	double x, y;
-
-   protected:
-	void setX(double _x) { x = _x; }
-	void setY(double _y) { y = _y; }
+	float x, y;
 
    public:
-	Vec(double _x, double _y) {
-		x = _x;
-		y = _y;
-	}
-	Vec() = default;
-	double getX() const { return x; }
-	double getY() const { return y; }
-	double get_dis() const { return sqrt(x * x + y * y); }
-    double get_angle() const { return atan2(y, x); }
+	Vec(float _x, float _y) : x(_x),y(_y){}
+	Vec() : x(0), y(0) {}
+	~Vec() {}
+	float getX() const { return x; }
+	float getY() const { return y; }
+	float get_dis() const { return (float)sqrt(x * x + y * y); }
+    float get_angle() const { return (float)atan2(y, x); }
 
 	// Overload == operator
 	bool operator==(Vec v) const { return (v.x == x && v.y == y); }
@@ -31,32 +25,32 @@ class Vec {
 
 	// Overload - on 2 Vectors
 	// return their difference Vector
-	Vec operator-(Vec v) { return Vec(x - v.x, y - v.y); }
+	Vec operator-(Vec v) const { return Vec(x - v.x, y - v.y); }
 
-	// Overload * operator on a double k
+	// Overload * operator on a float k
 	// return current Vector scaled by k
-	Vec operator*(double k) { return Vec(x * k, y * k); }
+	Vec operator*(float k) const { return Vec(x * k, y * k); }
 
-    // Overload / operator on a double k
+    // Overload / operator on a float k
     // return current Vector scaled by 1/k
-    Vec operator/(double k) { return Vec(x / k, y / k); }
+    Vec operator/(float k) const { return Vec(x / k, y / k); }
 
 	// Overload * on  Vectors
 	// return thier inner product (scaler product)
-	double operator*(Vec v) const { return (x * v.x + y * v.y); }
+	float operator*(Vec v) const { return (x * v.x + y * v.y); }
 
 	// Overload << on an angle
 	// return current vector rotated counter clockwise
 	// by this angle
-	Vec operator<<(double theta) {
-		return Vec(x * cos(theta) - y * sin(theta), x * sin(theta) + y * cos(theta));
+	Vec operator<<(float theta) {
+		return Vec((float)(x * cos(theta) - y * sin(theta)), (float)(x * sin(theta) + y * cos(theta)));
 	}
 
 	// Overload >> on an angle
 	// return current vector rotated clockwise
 	// by this angle
-	Vec operator>>(double theta) {
-		return Vec(x * cos(theta) + y * sin(theta), -x * sin(theta) + y * cos(theta));
+	Vec operator>>(float theta) {
+		return Vec((float)(x * cos(theta) + y * sin(theta)), (float)(-x * sin(theta) + y * cos(theta)));
 	}
 
     // Overload += on a vector
@@ -74,6 +68,10 @@ class Vec {
         y -= v.y;
         return *this;
     }
+
+	static Vec bezier(const Vec& p0, const Vec& p1, const Vec& p2, float t) {
+        return (p0 *((1 - t) * (1 - t))) + (p1 * 2 * (1 - t) * t) + (p2 * t * t);
+    }
 };
 
-#endif  // VEC_H
+#endif // VEC_H

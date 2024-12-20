@@ -1,7 +1,10 @@
+#ifndef _PARKINGLOTH
+#define _PARKINGLOTH
 #include <iostream>
 #include <vector>
 #include <string>
 #include <ctime>
+#include <array>
 
 using slot = struct _slot {
     int slot_number;
@@ -15,7 +18,7 @@ static const std::array<std::string, 4> vehicle_type = {"Car", "UFO", "Teleporte
 enum class VehicleType {
     Car,
     UFO,
-    Teleported,
+    Teleporter,
     Spacecraft
 };
 
@@ -36,27 +39,6 @@ class Vehicle {
         void out_ticket() const;
         void park(int slot);
         int unpark() const;
-        void draw() const;
-};
-
-class Car : public Vehicle {
-    public:
-        Car();
-};
-
-class UFO : public Vehicle {
-    public:
-        UFO();
-};
-
-class Teleported : public Vehicle {
-    public:
-        Teleported();
-};
-
-class Spacecraft : public Vehicle {
-    public:
-        Spacecraft();
 };
 
 class ParkingLot {
@@ -71,3 +53,5 @@ class ParkingLot {
         void unpark(Vehicle* v);
         void draw() const;
 };
+
+#endif
